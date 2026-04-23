@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevDash | Workspace</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="sys-bar">
+      <div class="sys-left">
+        <span id="greeting">Good morning</span>, <span id="current-date"></span>
+      </div>
+      <div class="sys-right">
+        <button
+          id="add-sticky-btn"
+          class="icon-btn"
+          title="Add Sticky Note"
+          style="font-size: 1rem"
+        >
+          📝
+        </button>
+        <kbd class="shortcut-hint">⌘K</kbd>
+        <span id="live-clock">00:00:00</span>
+      </div>
+    </header>
+
+    <main class="dashboard" id="dashboard-grid">
+      <section class="widget" data-id="shortcuts" draggable="true">
+        <div class="widget-header">
+          <h2>Shortcuts</h2>
+          <button id="add-shortcut-btn" class="icon-btn">+</button>
+        </div>
+        <div class="widget-content" id="shortcuts-container"></div>
+      </section>
+
+      <section class="widget" data-id="todos" draggable="true">
+        <div class="widget-header">
+          <h2>Tasks</h2>
+          <div class="widget-actions">
+            <select id="todo-filter">
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Done</option>
+            </select>
+          </div>
+        </div>
+        <div class="widget-content">
+          <form id="todo-form">
+            <input
+              type="text"
+              id="todo-input"
+              placeholder="Add a task..."
+              required
+              autocomplete="off"
+            />
+            <select id="todo-priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Med</option>
+              <option value="high">High</option>
+            </select>
+          </form>
+          <ul id="todo-list"></ul>
+        </div>
+      </section>
+
+      <section class="widget" data-id="notes" draggable="true">
+        <div class="widget-header">
+          <h2>Quick Notes</h2>
+        </div>
+        <div class="widget-content">
+          <div
+            class="note-editor"
+            id="note-editor"
+            contenteditable="true"
+            placeholder="Start typing... Use '-' for lists, '#' for headings."
+          ></div>
+        </div>
+      </section>
+
+      <section class="widget" data-id="meetings" draggable="true">
+        <div class="widget-header">
+          <h2>Upcoming</h2>
+          <button id="add-meeting-btn" class="icon-btn">+</button>
+        </div>
+        <div class="widget-content">
+          <ul id="meeting-list"></ul>
+        </div>
+      </section>
+
+      <div class="quote-container" id="quote-container"></div>
+    </main>
+
+    <div id="stickies-layer"></div>
+
+    <div class="overlay" id="cmd-palette-overlay">
+      <div class="cmd-palette">
+        <input
+          type="text"
+          id="cmd-input"
+          placeholder="Search tasks, shortcuts, or type a command..."
+          autocomplete="off"
+        />
+        <ul id="cmd-results"></ul>
+      </div>
+    </div>
+
+    <div class="overlay" id="input-modal-overlay">
+      <div class="modal">
+        <h3 id="modal-title">Add Item</h3>
+        <form id="modal-form">
+          <div id="modal-inputs"></div>
+          <div class="modal-actions">
+            <button type="button" id="modal-cancel">Cancel</button>
+            <button type="submit" class="primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
